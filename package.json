@@ -16,7 +16,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "next",
+    "gatsby": "^3.0.0-next.0",
     "gatsby-plugin-react-helmet": "^4.13.0",
     "nes.css": "^2.3.0",
     "react": "^17.0.1",
