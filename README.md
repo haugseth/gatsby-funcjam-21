@@ -44,3 +44,7 @@ Use a POST request with a JSON body like this to convert temperature from farenh
 Read the Gatsby [functions docs](https://www.gatsbyjs.com/docs/reference/functions/).
 Check out this video all about Gatsby functions 
 Take a look at the Functions Use Cases over [here](https://www.gatsbyjs.com/products/cloud/functions/). 
+
+## Credits
+
+- Vintage CSS styles from https://github.com/nostalgic-css

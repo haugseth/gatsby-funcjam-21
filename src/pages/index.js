@@ -34,12 +34,8 @@ export default function App() {
       },
     };
 
-    console.log('req', requestOptions);
-
     const response = await fetch(`/api/temperature`, requestOptions);
     const json = await response.json();
-
-    console.log('res', json);
 
     setState({ celsius: "", farenheit: "" });
     setState(json);
