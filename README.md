@@ -1,33 +1,42 @@
 
-# Gatsby FuncJam '21
+# Temperature Converter (Gatsby FuncJam '21)
 
-This example shows how to build a form with [react-hook-form](https://react-hook-form.com/) that submits to a Gatsby Function.
+![Example screenshot of my app](screenshot.png "Screenshot")
 
-1.  **Start developing.**
+## Installation
 
-    To get started clone this repo locally and run `npm install` to add all necessary packages.
+To install this application, clone the repo and download the node module packages. Run npm start to start the development server
 
-    ```shell
-    cd examples/functions-basic-form
-    npm install
-    npm run develop
-    ```
+- `git clone URL`
+- `npm install`
+- `npm start`
 
-2.  **Open the code and start customizing!**
+## Testing the API function
 
-    Your site is now running at http://localhost:8000! You can use the UI on the index page to test the functions or directly access them at http://localhost:8000/api/form
+To test the function run curl or use postman and use the following URL to access the function when running the development server
 
-    Try editing the function in `src/api/form.ts` or form at `src/pages/index.js`
+- http://localhost:8000/api/temperature
 
-3.  **Deploy**
+Use a POST request with a JSON body like this to convert temperature from celsius to farenheit:
 
-You can deploy this example on Gatsby Cloud by copying the example into a new repo and [connecting that to Gatsby Cloud](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/deploying-to-gatsby-cloud/#set-up-an-existing-gatsby-site).
+```json
+{
+    "celsius": "6"
+}
+```
 
+Use a POST request with a JSON body like this to convert temperature from farenheit to celsius:
+
+```json
+{
+    "farenheit": "90"
+}
+```
 
 ## Submission Checklist
 
-- [ ] Add installation documentation to the README
-- [ ] Update the `/api` folder with your function
+- [x] Add installation documentation to the README
+- [x] Update the `/api` folder with your function
 - [ ] Submit your theme at https://gatsbyjs.com/func-jam-21/
 
 ## Helpful Links

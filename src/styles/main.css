@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+html {
+    font-size: 100%;
+    font-family: 'Press Start 2P', cursive;
+}
+
+header, main, footer {
+    padding: 0;
+    margin: 0;
+    width: 90%;
+    max-width: 35rem;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+    padding: 1rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #454545;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1rem 1rem;
+}
+
+h2 strong {
+    color: red;
+    font-size: 3rem;
+}
+
+h2 span {
+    color: green;
+    font-size: 2rem;
+}
+
+input { 
+    all: unset;
+    margin-bottom: 1rem;
+    border: 2px solid black;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 0.2rem;
+    text-align: center;
+    color: green;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #757575;
+    text-align: center;
+}
+
+input:focus::placeholder {
+    color: lightgray;
+}
+
+input[type="submit"] {
+    background-color: green;
+    color: white;
+    text-align: center;
+}
+
+input[type="button"] {
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
+input:hover, input:active {
+    opacity: 0.75;
+}
+
+@media (max-width: 40em) {
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    input {
+        font-size: 1.2rem;
+    }
+}
+
+footer {
+    padding: 2rem 0;
+}
+
+footer p {
+    font-size: 0.8rem;
+    color: black;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 30em) {
+    footer p {
+        font-size: 0.5rem;
+    }
+}

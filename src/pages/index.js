@@ -1,81 +1,82 @@
-import React from "react"
-import { useForm } from "react-hook-form"
+import React from "react";
+import { Helmet } from "react-helmet";
+
+import "nes.css/css/nes.min.css";
+import "../styles/main.css";
 
 export default function App() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
-  const onSubmit = data => {
-    fetch(`/api/form`, {
+  const [state, setState] = React.useState({ celsius: "", farenheit: "" });
+  
+  function handleChange(event) {
+    const { name, value } = event.target;
+
+    handleReset();    
+
+    setState(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+
+  }
+
+  function handleReset() {
+    setState({ celsius: "", farenheit: "" });
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const requestOptions = {
       method: `POST`,
-      body: JSON.stringify(data),
+      body: JSON.stringify(state),
       headers: {
         "content-type": `application/json`,
       },
-    })
-      .then(res => res.json())
-      .then(body => {
-        console.log(`response from API:`, body)
-      })
+    };
+
+    console.log('req', requestOptions);
+
+    const response = await fetch(`/api/temperature`, requestOptions);
+    const json = await response.json();
+
+    console.log('res', json);
+
+    setState({ celsius: "", farenheit: "" });
+    setState(json);
   }
 
-  console.log({ errors })
-
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      style={{ display: `block`, width: 400 }}
-    >
-      <label htmlFor="first-name">First name</label>
-      <input
-        id="first-name"
-        type="text"
-        style={{ display: `block`, marginBottom: 16 }}
-        {...register("First name", { required: true, maxLength: 80 })}
-      />
+    <>
+      <Helmet>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Temperature Converter</title>
+      </Helmet>
+      <header>
+        <h1>Temperature Converter</h1>
+      </header>
+      <main>
+        <h2>Insert temperature in <strong>ONE</strong> of the boxes to <span>convert</span> to celsius or farenheit</h2>
+        <form onSubmit={handleSubmit}>
+          <section>
+            <input name="celsius" type="number" onChange={handleChange} value={state.celsius} placeholder="Celsius" />
+          </section>
+          
+          <section>
+            <input name="farenheit" type="number" onChange={handleChange} value={state.farenheit} placeholder="Farenheit" />
+          </section>
 
-      <label htmlFor="last-name">Last name</label>
-      <input
-        id="last-name"
-        type="text"
-        style={{ display: `block`, marginBottom: 16 }}
-        {...register("Last name", { required: true, maxLength: 100 })}
-      />
-
-      <label htmlFor="email">Email</label>
-      <input
-        id="email"
-        type="text"
-        style={{ display: `block`, marginBottom: 16 }}
-        {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
-      />
-
-      <label htmlFor="tel">Mobile number</label>
-      <input
-        id="tel"
-        type="tel"
-        style={{ display: `block`, marginBottom: 16 }}
-        {...register("Mobile number", {
-          required: true,
-          minLength: 6,
-          maxLength: 12,
-        })}
-      />
-
-      <label htmlFor="title">Title</label>
-      <select
-        {...register("Title", { required: true })}
-        style={{ display: `block`, marginBottom: 16 }}
-      >
-        <option value="Mr">Mr</option>
-        <option value="Mrs">Mrs</option>
-        <option value="Miss">Miss</option>
-        <option value="Dr">Dr</option>
-      </select>
-
-      <input type="submit" />
-    </form>
+          <section>
+            <input type="submit" value="Convert" />
+            <input type="button" value="Clear" onClick={handleReset} />
+          </section>
+        </form>
+      </main>
+      <footer>
+        <p>CSS by <br /><a href="https://github.com/nostalgic-css">https://github.com/nostalgic-css</a></p>
+        <p>Design and code by <br /><a href="https://github.com/haugseth">https://github.com/haugseth</a></p>
+      </footer>
+    </>
   )
 }
