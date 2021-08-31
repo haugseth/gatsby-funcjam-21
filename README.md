@@ -37,7 +37,7 @@ Use a POST request with a JSON body like this to convert temperature from farenh
 
 - [x] Add installation documentation to the README
 - [x] Update the `/api` folder with your function
-- [ ] Submit your theme at https://gatsbyjs.com/func-jam-21/
+- [x] Submit your theme at https://gatsbyjs.com/func-jam-21/
 
 ## Helpful Links
 
